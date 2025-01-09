@@ -9,6 +9,6 @@ export const SubHeading = ({ children, align = "left" }) => {
 };
 
 SubHeading.propTypes = {
-	children: PropTypes.string.isRequired,
-	align: PropTypes.string.isRequired,
+	children: PropTypes.string,
+	align: PropTypes.string,
 };

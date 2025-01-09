@@ -11,6 +11,7 @@ export default {
 				dark1: "#151515",
 				dark2: "#444444",
 				dark3: "#737373",
+				dark6: "#E8E8E8",
 				success: "#29B170",
 			},
 			backgroundColor: {
