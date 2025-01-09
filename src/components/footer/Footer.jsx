@@ -12,7 +12,7 @@ export const Footer = () => {
 	return (
 		<footer className="bg-dark1 py-28">
 			<div className="max-w-[1140px] mx-auto px-5 xl:px-0 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-16">
-				<div className=" space-y-5">
+				<div className="space-y-5">
 					<img src={logo} alt="footer_logo" />
 					<p className="text-base text-[#E8E8E8]">
 						Edwin Diaz is a software and web technologies engineer, a life coach
