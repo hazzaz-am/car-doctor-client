@@ -14,7 +14,7 @@ export const Button = ({ variant, size, children }) => {
 	const userVariant = customVariant[variant];
 	const userSize = customSize[size];
 	return (
-		<button className={`md:text-[18px] font-semibold text-sm border-2 py-3 px-4 md:py-4 md:px-7 ${userVariant} ${userSize}`}>
+		<button className={`md:text-[18px] font-semibold text-xs sm:text-sm border-2 py-3 px-4 md:py-4 md:px-7 ${userVariant} ${userSize}`}>
 			{children}
 		</button>
 	);

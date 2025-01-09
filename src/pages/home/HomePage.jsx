@@ -1,5 +1,12 @@
+import { About } from "./components/About";
+import { Carousel } from "./components/Carousel";
+
+
 export const HomePage = () => {
-  return (
-    <div>HomePage</div>
-  )
-}
+	return (
+		<div className="">
+      <Carousel/>
+      <About/>
+    </div>
+	);
+};
