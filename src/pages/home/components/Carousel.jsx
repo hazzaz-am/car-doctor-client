@@ -11,7 +11,7 @@ export const Carousel = () => {
 			}}
 			className="bg-center bg-cover rounded-md object-cover mb-32"
 		>
-			<div className="py-16 px-20 md:py-24 md:px-28 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)] rounded-md md:flex md:justify-between">
+			<div className="py-10 px-5 lg:py-24 lg:px-28 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)] rounded-md md:flex md:justify-between">
 				<div className="w-full md:w-2/3 space-y-7">
 					<h1 className="text-white font-bold text-3xl sm:text-4xl md:text-5xl xl:text-6xl text-center md:text-left">
 						Affordable Price For Car Servicing
