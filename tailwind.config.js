@@ -10,6 +10,7 @@ export default {
 				primary: "#FF3811",
 				dark1: "#151515",
 				dark2: "#444444",
+				dark3: "#737373",
 				success: "#29B170",
 			},
 			backgroundColor: {
