@@ -1,9 +1,44 @@
-import { FcGoogle } from "react-icons/fc";
 import authImg from "../../assets/images/login/login.svg";
 import { InputGroup } from "../../components/InputGroup";
 import { Link } from "react-router";
+import { useAuth } from "../../hooks/useAuth";
+import toast from "react-hot-toast";
+import { SocialSign } from "./SocialSign";
 
 export const LoginPage = () => {
+	const { loginUser } = useAuth();
+
+	const handleLoginUser = (event) => {
+		event.preventDefault();
+		const form = event.currentTarget;
+		const formData = new FormData(form);
+
+		const email = formData.get("email");
+		const password = formData.get("password");
+
+		if (email.length === 0) {
+			return toast.error("Please enter a valid email address");
+		}
+
+		if (password.length === 0) {
+			return toast.error("Password Can not be empty");
+		}
+
+		loginUser(email, password)
+			.then(() => {
+				// Signed up
+				// const user = userCredential.user;
+				// console.log(user);
+				toast.success("Login Successfully");
+				form.reset();
+			})
+			.catch(() => {
+				// const errorMessage = error.message;
+				toast.error(`Something Went Wrong`);
+				// console.log("error",errorMessage);
+			});
+	};
+
 	return (
 		<section className="mb-32 flex flex-col-reverse lg:flex-row items-center justify-between gap-16">
 			<img src={authImg} alt="" className="w-1/2" />
@@ -13,7 +48,7 @@ export const LoginPage = () => {
 				</h2>
 
 				{/* sign up form */}
-				<form className="space-y-8 mt-12">
+				<form onSubmit={handleLoginUser} className="space-y-8 mt-12">
 					<InputGroup
 						type="email"
 						name="email"
@@ -36,13 +71,7 @@ export const LoginPage = () => {
 				</form>
 
 				{/* social sign up */}
-				<div className="mt-8 mb-14">
-					<p className="text-center font-medium text-dark2">OR</p>
-					<button className="text-dark1 flex items-center gap-2 border-2 w-full justify-center py-3 rounded-lg mt-4 hover:border-primary hover:text-primary duration-500 transition-colors">
-						<FcGoogle className="text-xl" />
-						<p className="capitalize font-medium">Sign in with Google</p>
-					</button>
-				</div>
+				<SocialSign/>
 
 				{/* bottom */}
 				<p className="text-center text-dark3 text-lg">
