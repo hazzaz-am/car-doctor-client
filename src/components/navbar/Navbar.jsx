@@ -90,7 +90,7 @@ export const Navbar = () => {
 							{user?.email.slice(0, 2).toUpperCase()}
 						</p>
 						{isModalOpen && (
-							<div className="absolute top-28 md:top-32 right-2 md:right-2 lg:right-2 border rounded-lg bg-dark6">
+							<div className="absolute top-28 md:top-32 right-2 md:right-2 lg:right-2 rounded-lg bg-dark6">
 								<button
 									onClick={handleSignOutUser}
 									className="hover:bg-primary px-8 py-4 rounded-lg duration-500 transition-colors hover:text-white select-none"

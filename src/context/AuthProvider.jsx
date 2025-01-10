@@ -9,7 +9,7 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import { auth } from "../firebase/firebase.console";
+import { auth } from "../firebase/firebase.config";
 
 const provider = new GoogleAuthProvider();
 

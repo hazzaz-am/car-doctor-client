@@ -1,14 +1,19 @@
 import { FcGoogle } from "react-icons/fc";
 import { useAuth } from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router";
 
 export const SocialSign = () => {
 	const { signinWithGoogle } = useAuth();
+	const navigate = useNavigate()
+
+
 	const handleGoogleSignin = () => {
 		signinWithGoogle()
 			.then(() => {
 				// console.log(result);
 				toast.success("Sign in successfully");
+				navigate("/")
 			})
 			.catch(() => {
 				// console.log(error.message);

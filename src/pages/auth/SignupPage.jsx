@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import authImg from "../../assets/images/login/login.svg";
 import { InputGroup } from "../../components/InputGroup";
 import { useAuth } from "../../hooks/useAuth";
@@ -7,6 +7,7 @@ import { SocialSign } from "./SocialSign";
 
 export const SignupPage = () => {
 	const { createNewUser } = useAuth();
+		const navigate = useNavigate();
 
 	const handleCreateUser = (event) => {
 		event.preventDefault();
@@ -31,6 +32,7 @@ export const SignupPage = () => {
 				// console.log(user);
 				toast.success("Signup Successfully");
 				form.reset()
+				navigate("/")
 			})
 			.catch(() => {
 				// const errorMessage = error.message;

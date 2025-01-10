@@ -6,12 +6,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-	apiKey: "AIzaSyCd_VEXyfQp-d2bDxGi0GS7EGsgZSEJ6XE",
-	authDomain: "car-shop-47788.firebaseapp.com",
-	projectId: "car-shop-47788",
-	storageBucket: "car-shop-47788.firebasestorage.app",
-	messagingSenderId: "901717507673",
-	appId: "1:901717507673:web:67504a94ce1981f5b0fb48",
+	apiKey: import.meta.env.VITE_apiKey,
+	authDomain: import.meta.env.VITE_authDomain,
+	projectId: import.meta.env.VITE_projectId,
+	storageBucket: import.meta.env.VITE_storageBucket,
+	messagingSenderId: import.meta.env.VITE_messagingSenderId,
+	appId: import.meta.env.VITE_appId,
 };
 
 // Initialize Firebase

@@ -1,12 +1,13 @@
 import authImg from "../../assets/images/login/login.svg";
 import { InputGroup } from "../../components/InputGroup";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useAuth } from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { SocialSign } from "./SocialSign";
 
 export const LoginPage = () => {
 	const { loginUser } = useAuth();
+	const navigate = useNavigate()
 
 	const handleLoginUser = (event) => {
 		event.preventDefault();
@@ -31,6 +32,7 @@ export const LoginPage = () => {
 				// console.log(user);
 				toast.success("Login Successfully");
 				form.reset();
+				navigate("/")
 			})
 			.catch(() => {
 				// const errorMessage = error.message;
