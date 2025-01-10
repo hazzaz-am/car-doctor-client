@@ -21,7 +21,7 @@ export const ServiceItem = ({service}) => {
 						Price: ${service.price}
 					</h5>
 					<Link
-						to={`/service/${service._id}`}
+						to={`/services/${service._id}`}
 						className="text-primary lg:text-xl"
 					>
 						<FaArrowRight />
