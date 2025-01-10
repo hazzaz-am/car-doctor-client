@@ -1,0 +1,39 @@
+
+[
+  {
+    "_id": "1",
+    "title": "Premium Brake Pad Set",
+    "price": 89,
+    "img": "../src/assets/images/products/1.png"
+  },
+  {
+    "_id": "2",
+    "title": "Car Air Filter",
+    "price": 20,
+    "img": "../src/assets/images/products/2.png"
+  },
+  {
+    "_id": "3",
+    "title": "LED Headlight Assembly",
+    "price": 199,
+    "img": "../src/assets/images/products/3.png"
+  },
+  {
+    "_id": "4",
+    "title": "Air Suspension Kit",
+    "price": 899,
+    "img": "../src/assets/images/products/4.png"
+  },
+  {
+    "_id": "5",
+    "title": "Performance System",
+    "price": 449,
+    "img": "../src/assets/images/products/5.png"
+  },
+  {
+    "_id": "6",
+    "title": "Spark Plug Set",
+    "price": 29,
+    "img": "../src/assets/images/products/6.png"
+  }
+]
