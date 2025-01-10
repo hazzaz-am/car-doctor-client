@@ -2,8 +2,41 @@ import { Link } from "react-router";
 import authImg from "../../assets/images/login/login.svg";
 import { FcGoogle } from "react-icons/fc";
 import { InputGroup } from "../../components/InputGroup";
+import { useAuth } from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 export const SignupPage = () => {
+	const { createNewUser } = useAuth();
+
+	const handleCreateUser = (event) => {
+		event.preventDefault();
+		const form = event.currentTarget;
+		const formData = new FormData(form);
+
+		const email = formData.get("email");
+		const password = formData.get("password");
+
+		if (email.length === 0) {
+			return toast.error("Please enter a valid email address");
+		}
+
+		if (password.length === 0) {
+			return toast.error("Password Can not be empty");
+		}
+
+		createNewUser(email, password)
+			.then(() => {
+				// Signed up
+				// const user = userCredential.user;
+				// console.log(user);
+				toast.success("Signup Successfully");
+			})
+			.catch(() => {
+				// const errorMessage = error.message;
+				toast.error(`Something Went Wrong`);
+				// console.log("error",errorMessage);
+			});
+	};
 	return (
 		<section className="mb-32 flex flex-col-reverse lg:flex-row items-center justify-between gap-16">
 			<img src={authImg} alt="" className="w-1/2" />
@@ -13,7 +46,7 @@ export const SignupPage = () => {
 				</h2>
 
 				{/* sign up form */}
-				<form className="space-y-8 mt-12">
+				<form onSubmit={handleCreateUser} className="space-y-8 mt-12">
 					<InputGroup name="name" labelTitle="Name" placeholder="Your Name" />
 					<InputGroup
 						type="email"
