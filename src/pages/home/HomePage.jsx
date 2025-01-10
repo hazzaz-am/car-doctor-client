@@ -1,6 +1,7 @@
 import { About } from "./components/About";
 import { Carousel } from "./components/Carousel";
 import { Contact } from "./components/Contact";
+import { Features } from "./components/Features";
 import { Products } from "./components/Products";
 import { Services } from "./components/Services";
 import { TeamSection } from "./components/TeamSection";
@@ -14,6 +15,7 @@ export const HomePage = () => {
 			<Contact />
 			<Products/>
 			<TeamSection/>
+			<Features/>
 		</div>
 	);
 };
