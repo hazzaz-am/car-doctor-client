@@ -4,8 +4,7 @@ import { SectionHeading } from "../../../components/SectionHeading";
 import { SubHeading } from "../../../components/SubHeading";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { Link } from "react-router";
-import { FaStar } from "react-icons/fa";
-
+import { Review } from "../../../components/Review";
 
 export const Products = () => {
 	const [products, setProducts] = useState([]);
@@ -33,12 +32,9 @@ export const Products = () => {
 			{/* products loader */}
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-14">
 				{products.map((product) => (
-					<div
-						key={product._id}
-						className="border-2 py-6 px-4"
-					>
+					<div key={product._id} className="border-2 py-6 px-4">
 						<div className="bg-dark7 px-16 py-12 relative rounded-lg">
-							<div className="max-w-40 max-h-36 mx-auto">
+							<div className="w-28 h-28 mx-auto">
 								<img
 									src={product.img}
 									alt=""
@@ -54,11 +50,7 @@ export const Products = () => {
 						</div>
 						<div className="space-y-[10px]">
 							<div className="flex items-center justify-center mt-5 gap-1">
-								<FaStar className="text-[#FF912C] text-xl" />
-								<FaStar className="text-[#FF912C] text-xl" />
-								<FaStar className="text-[#FF912C] text-xl" />
-								<FaStar className="text-[#FF912C] text-xl" />
-								<FaStar className="text-[#FF912C] text-xl" />
+								<Review />
 							</div>
 							<h4 className="font-bold text-dark2 lg:text-2xl text-center">
 								{product.title}
