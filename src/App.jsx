@@ -4,6 +4,7 @@ import { LoginPage } from "./pages/auth/LoginPage";
 import { SignupPage } from "./pages/auth/SignupPage";
 import { ServicesPage } from "./pages/service/ServicesPage";
 import { PrivateRoutes } from "./routes/PrivateRoutes";
+import { ErrorPage } from "./pages/error/ErrorPage";
 
 
 export const App = () => {
@@ -12,7 +13,7 @@ export const App = () => {
 			<Routes>
 				<Route path="/" element={<HomePage />} />
 				<Route
-					path="/"
+					path="/services"
 					element={
 						<PrivateRoutes>
 							<ServicesPage />
@@ -21,6 +22,7 @@ export const App = () => {
 				/>
 				<Route path="/signup" element={<SignupPage />} />
 				<Route path="/login" element={<LoginPage />} />
+				<Route path="*" element={<ErrorPage />} />
 			</Routes>
 		</>
 	);
