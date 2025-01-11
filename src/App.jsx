@@ -6,7 +6,7 @@ import { ServicesPage } from "./pages/service/ServicesPage";
 import { PrivateRoutes } from "./routes/PrivateRoutes";
 import { ErrorPage } from "./pages/error/ErrorPage";
 import { ServiceDetails } from "./pages/service/ServiceDetails";
-
+import { CheckoutPage } from "./pages/checkout/CheckoutPage";
 
 export const App = () => {
 	return (
@@ -21,9 +21,24 @@ export const App = () => {
 						</PrivateRoutes>
 					}
 				/>
-				<Route path="/services/:serviceId" element={<ServiceDetails/>}/>
+				<Route
+					path="/services/:serviceId"
+					element={
+						<PrivateRoutes>
+							<ServiceDetails />
+						</PrivateRoutes>
+					}
+				/>
 				<Route path="/signup" element={<SignupPage />} />
 				<Route path="/login" element={<LoginPage />} />
+				<Route
+					path="/checkout"
+					element={
+						<PrivateRoutes>
+							<CheckoutPage />
+						</PrivateRoutes>
+					}
+				/>
 				<Route path="*" element={<ErrorPage />} />
 			</Routes>
 		</>
