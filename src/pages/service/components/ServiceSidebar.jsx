@@ -20,9 +20,9 @@ export const ServiceSidebar = ({ activeService }) => {
 		<div className="w-1/2 md:w-1/3">
 			{/* service category */}
 			<div className="bg-dark7 px-2 py-4 md:p-10 rounded-lg mb-8">
-				<h2 className="font-bold text-dark1 md:text-2xl">Services</h2>
+				<h2 className="font-bold text-dark1 md:text-2xl">Top Services</h2>
 				<div className="mt-5 space-y-5">
-					{categories?.map((service) => (
+					{categories?.slice(0, 4).map((service) => (
 						<SingleCategory
 							key={service?._id}
 							title={service?.title}

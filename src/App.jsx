@@ -7,6 +7,7 @@ import { PrivateRoutes } from "./routes/PrivateRoutes";
 import { ErrorPage } from "./pages/error/ErrorPage";
 import { ServiceDetails } from "./pages/service/ServiceDetails";
 import { CheckoutPage } from "./pages/checkout/CheckoutPage";
+import { AddNewService } from "./pages/service/AddNewService";
 
 export const App = () => {
 	return (
@@ -18,6 +19,14 @@ export const App = () => {
 					element={
 						<PrivateRoutes>
 							<ServicesPage />
+						</PrivateRoutes>
+					}
+				/>
+				<Route
+					path="/add-new-service"
+					element={
+						<PrivateRoutes>
+							<AddNewService />
 						</PrivateRoutes>
 					}
 				/>

@@ -34,6 +34,21 @@ const routes = [
 	},
 ];
 
+const authRoutes = [
+	{
+		path: "/",
+		page: "Home",
+	},
+	{
+		path: "/services",
+		page: "Services",
+	},
+	{
+		path: "/add-new-service",
+		page: "Add Service",
+	},
+];
+
 export const Navbar = () => {
 	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 	const [isModalOpen, setIsModalOpen] = useState(false);
@@ -66,13 +81,23 @@ export const Navbar = () => {
 			{/* nav items */}
 			<SideNav routes={routes} isSidebarOpen={isSidebarOpen} />
 			<menu className="hidden md:flex items-center gap-10 ">
-				{routes.map((route) => (
-					<NavigationLink
-						key={route.page}
-						path={route.path}
-						page={route.page}
-					/>
-				))}
+				{!user &&
+					routes.map((route) => (
+						<NavigationLink
+							key={route.page}
+							path={route.path}
+							page={route.page}
+						/>
+					))}
+
+				{user &&
+					authRoutes.map((route) => (
+						<NavigationLink
+							key={route.page}
+							path={route.path}
+							page={route.page}
+						/>
+					))}
 			</menu>
 
 			{/* cart */}

@@ -32,7 +32,7 @@ export const Services = () => {
 
 			{/* services */}
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-14">
-				{services.map((service) => (
+				{services.slice(0, 6).map((service) => (
 					<ServiceItem key={service._id} service={service}/>
 				))}
 			</div>
