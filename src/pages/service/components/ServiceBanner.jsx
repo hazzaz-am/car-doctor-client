@@ -1,11 +1,11 @@
-import serviceBanner from "../../../assets/service-page/service-banner.png";
+import PropTypes from "prop-types";
 import { Link } from "react-router";
 
-export const ServiceBanner = () => {
+export const ServiceBanner = ({ image, pathName, path }) => {
 	return (
 		<div
 			style={{
-				backgroundImage: `url(${serviceBanner})`,
+				backgroundImage: `url(${image})`,
 			}}
 			className="bg-cover bg-center object-cover rounded-lg mb-32"
 		>
@@ -14,9 +14,18 @@ export const ServiceBanner = () => {
 					Service Details
 				</h2>
 				<div className="bg-primary text-center absolute bottom-0  px-4 py-3 text-white rounded-sm font-medium text-sm lg:text-xl">
-					<Link to="/">Home</Link> / <Link to="/services">Service Details</Link>
+					<Link to="/">Home</Link> /{" "}
+					<Link to={`${path}`} className="capitalize">
+						{pathName}
+					</Link>
 				</div>
 			</div>
 		</div>
 	);
+};
+
+ServiceBanner.propTypes = {
+	image: PropTypes.string,
+	pathName: PropTypes.string,
+	path: PropTypes.string,
 };
