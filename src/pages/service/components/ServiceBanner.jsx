@@ -1,11 +1,13 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router";
+import serviceBanner from "../../../assets/service-page/service-banner.png";
 
-export const ServiceBanner = ({ image, pathName, path }) => {
+
+export const ServiceBanner = ({ pathName, path }) => {
 	return (
 		<div
 			style={{
-				backgroundImage: `url(${image})`,
+				backgroundImage: `url(${serviceBanner})`,
 			}}
 			className="bg-cover bg-center object-cover rounded-lg mb-32"
 		>

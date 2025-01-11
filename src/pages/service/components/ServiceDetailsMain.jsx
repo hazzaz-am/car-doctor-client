@@ -8,12 +8,12 @@ import youtubeVideo from '../../../assets/service-page/youtube-video.png'
 export const ServiceDetailsMain = ({service}) => {
 
   return (
-		<div className="w-2/3">
+		<div className="w-1/2 md:w-2/3">
 			<div>
 				<img src={service?.img} alt="" className="w-full rounded-lg" />
 			</div>
 			<div className="mt-12">
-				<h2 className="text-dark1 font-bold text-4xl mb-8">{service?.title}</h2>
+				<h2 className="text-dark1 font-bold text-base md:text-4xl mb-8">{service?.title}</h2>
 				<Paragraph>{service?.description}</Paragraph>
 			</div>
 			{/* facility */}
@@ -22,7 +22,7 @@ export const ServiceDetailsMain = ({service}) => {
 
 			{/* common for all service */}
 			<div className="mt-12 mb-8">
-				<h2 className="text-dark1 font-bold text-4xl mb-8">{service?.title}</h2>
+				<h2 className="text-dark1 font-bold text-base md:text-4xl mb-8">{service?.title}</h2>
 				<Paragraph>{service?.description}</Paragraph>
 			</div>
 
