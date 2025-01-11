@@ -7,7 +7,7 @@ import logo from "../../../assets/logo/footer-logo.svg";
 import { Button } from "../../../components/Button";
 import { Link } from "react-router";
 
-export const ServiceSidebar = ({ activeCategory, price }) => {
+export const ServiceSidebar = ({ activeService }) => {
 	const [categories, setCategories] = useState([]);
 
 	useEffect(() => {
@@ -26,7 +26,7 @@ export const ServiceSidebar = ({ activeCategory, price }) => {
 						<SingleCategory
 							key={service?._id}
 							title={service?.title}
-							activeCategory={activeCategory}
+							activeCategory={activeService?.title}
 							id={service?._id}
 						/>
 					))}
@@ -63,9 +63,9 @@ export const ServiceSidebar = ({ activeCategory, price }) => {
 			</div>
 
 			<h2 className="text-dark1 md:text-4xl font-bold mt-7 mb-9">
-				Price $ {price}
+				Price $ {activeService?.price}
 			</h2>
-			<Link to="/checkout">
+			<Link to={`/checkout/${activeService._id}`}>
 				<Button size="lg" variant="primary">
 					Checkout
 				</Button>
@@ -75,6 +75,5 @@ export const ServiceSidebar = ({ activeCategory, price }) => {
 };
 
 ServiceSidebar.propTypes = {
-	activeCategory: PropTypes.string,
-	price: PropTypes.string,
+	activeService: PropTypes.object,
 };

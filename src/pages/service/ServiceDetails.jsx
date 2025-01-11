@@ -16,18 +16,14 @@ export const ServiceDetails = () => {
 
 	return (
 		<section className="mb-32">
-			<ServiceBanner
-				pathName="Services"
-				path="/services"
-			/>
+			<ServiceBanner pathName="Services" path="/services" />
 			<div className="flex gap-6">
 				{/* service details main */}
 				<ServiceDetailsMain service={service} />
 
 				{/* service details sidebar */}
 				<ServiceSidebar
-					activeCategory={service?.title}
-					price={service?.price}
+					activeService={service}
 				/>
 			</div>
 		</section>

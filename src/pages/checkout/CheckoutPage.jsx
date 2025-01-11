@@ -1,42 +1,87 @@
+import { useParams } from "react-router";
 import { Button } from "../../components/Button";
-import { ServiceBanner } from "../service/components/ServiceBanner"
-import { Input } from "./components/Input"
+import { ServiceBanner } from "../service/components/ServiceBanner";
+import { Input } from "./components/Input";
+import { useEffect, useState } from "react";
+import { useAuth } from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 export const CheckoutPage = () => {
+	const [service, setService] = useState({});
+	const { checkoutId } = useParams();
+	const { user } = useAuth();
 
 	const handleOrderConfirmForm = (event) => {
-		event.preventDefault()
-		const form = event.currentTarget
-		const formData = new FormData(form)
-		console.log(formData.get("firstName"));
-		console.log(formData.get("lastName"));
-		console.log(formData.get("phone"));
-		console.log(formData.get("email"));
-		console.log(formData.get("message"));
-	}
+		event.preventDefault();
+		const form = event.currentTarget;
+		const formData = new FormData(form);
+		const name = formData.get("name");
+		const phone = formData.get("phone");
+		const date = formData.get("date");
+		const email = formData.get("email");
 
-  return (
+		if (
+			name.length === 0 ||
+			phone.length === 0 ||
+			date.length === 0 ||
+			email.length === 0
+		) {
+			return toast.error("Field can not be empty");
+		}
+
+		const bookingInformation = {
+			customer_name: name,
+			email,
+			phone,
+			date,
+			service_id: service?.service_id,
+			price: service?.price,
+		};
+
+		fetch("http://localhost:5000/bookings", {
+			method: "POST",
+			headers: {
+				"content-type": "application/json",
+			},
+			body: JSON.stringify(bookingInformation),
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				if (data.insertedId) {
+					toast.success("Order Place Successfully");
+				} else {
+					toast.error("Something Went Wrong");
+				}
+			});
+
+		form.reset();
+	};
+
+	useEffect(() => {
+		fetch(`http://localhost:5000/services/${checkoutId}`)
+			.then((res) => res.json())
+			.then((data) => setService(data));
+	}, [checkoutId]);
+
+	return (
 		<section className="mb-32">
-			<ServiceBanner pathName="Checkout" path="/checkout" />
+			<ServiceBanner pathName="Checkout" path={`/checkout/${checkoutId}`} />
 
 			{/* form */}
 			<div className="bg-dark7 px-4 py-4 md:px-20 md:py-24 rounded-lg">
 				<form onSubmit={handleOrderConfirmForm} className="space-y-6">
 					<div className="flex flex-col md:flex-row items-center justify-between gap-6">
-						<Input name="firstName" placeholder="First Name" />
-						<Input name="lastName" placeholder="Last Name" />
+						<Input name="name" placeholder="Your Name" />
+						<Input type="date" name="date" />
 					</div>
-					<div className="flex  flex-col md:flex-row items-center justify-between gap-6">
+					<div className="flex flex-col md:flex-row items-center justify-between gap-6">
 						<Input type="tel" name="phone" placeholder="Your Phone" />
-						<Input type="email" name="email" placeholder="Your Email" />
-					</div>
-					<div>
-						<textarea
-							placeholder="Your Message"
-							name="message"
-							id="message"
-							className="w-full py-2 px-3 lg:py-4 lg:px-6 rounded-lg text-sm lg:text-base text-dark4 leading-[30px]"
-						></textarea>
+						<Input
+							type="email"
+							name="email"
+							placeholder="Your Email"
+							value={user?.email}
+						/>
 					</div>
 					<Button size="lg" variant="primary">
 						Order Confirm
@@ -45,4 +90,4 @@ export const CheckoutPage = () => {
 			</div>
 		</section>
 	);
-}
+};
