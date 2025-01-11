@@ -22,7 +22,7 @@ export const ServiceDetails = () => {
 				<ServiceDetailsMain service={service} />
 
 				{/* service details sidebar */}
-				<ServiceSidebar />
+				<ServiceSidebar activeCategory={service?.title} price={service?.price}/>
 			</div>
 		</section>
 	);
