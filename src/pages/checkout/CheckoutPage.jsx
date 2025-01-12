@@ -65,7 +65,7 @@ export const CheckoutPage = () => {
 
 	return (
 		<section className="mb-32">
-			<ServiceBanner pathName="Checkout" path={`/checkout/${checkoutId}`} />
+			<ServiceBanner pathName="Checkout" path={`/checkout/${checkoutId}`} title="Checkout"/>
 
 			{/* form */}
 			<div className="bg-dark7 px-4 py-4 md:px-20 md:py-24 rounded-lg">

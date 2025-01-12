@@ -43,7 +43,7 @@ export const AddNewService = () => {
 	};
 	return (
 		<section className="mb-32">
-			<ServiceBanner pathName="Services" path={`/services`} />
+			<ServiceBanner pathName="Services" path={`/services`} title="Add New Service"/>
 
 			{/* form */}
 			<div className="bg-dark7 px-4 py-4 md:px-20 md:py-24 rounded-lg">

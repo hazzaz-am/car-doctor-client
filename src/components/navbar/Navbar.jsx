@@ -47,6 +47,10 @@ const authRoutes = [
 		path: "/add-new-service",
 		page: "Add Service",
 	},
+	{
+		path: "/orders",
+		page: "Orders",
+	},
 ];
 
 export const Navbar = () => {

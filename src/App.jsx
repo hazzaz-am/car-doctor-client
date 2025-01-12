@@ -8,20 +8,14 @@ import { ErrorPage } from "./pages/error/ErrorPage";
 import { ServiceDetails } from "./pages/service/ServiceDetails";
 import { CheckoutPage } from "./pages/checkout/CheckoutPage";
 import { AddNewService } from "./pages/service/AddNewService";
+import { OrdersPage } from "./pages/orders/OrdersPage";
 
 export const App = () => {
 	return (
 		<>
 			<Routes>
 				<Route path="/" element={<HomePage />} />
-				<Route
-					path="/services"
-					element={
-						<PrivateRoutes>
-							<ServicesPage />
-						</PrivateRoutes>
-					}
-				/>
+				<Route path="/services" element={<ServicesPage />} />
 				<Route
 					path="/add-new-service"
 					element={
@@ -31,13 +25,14 @@ export const App = () => {
 					}
 				/>
 				<Route
-					path="/services/:serviceId"
+					path="/orders"
 					element={
 						<PrivateRoutes>
-							<ServiceDetails />
+							<OrdersPage />
 						</PrivateRoutes>
 					}
 				/>
+				<Route path="/services/:serviceId" element={<ServiceDetails />} />
 				<Route path="/signup" element={<SignupPage />} />
 				<Route path="/login" element={<LoginPage />} />
 				<Route
