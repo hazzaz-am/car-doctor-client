@@ -12,6 +12,7 @@ export const InputGroup = ({ name, labelTitle, type = "text", placeholder }) => 
 				id={name}
 				placeholder={placeholder}
 				className="border text-dark3 rounded-md px-6 py-3 text-base"
+				autoComplete="off"
 			/>
 		</div>
 	);

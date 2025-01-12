@@ -6,10 +6,12 @@ import {
 	GoogleAuthProvider,
 	onAuthStateChanged,
 	signInWithEmailAndPassword,
-  signInWithPopup,
-  signOut,
+	signInWithPopup,
+	signOut,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase.config";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const provider = new GoogleAuthProvider();
 
@@ -29,26 +31,52 @@ export const AuthProvider = ({ children }) => {
 		return signInWithEmailAndPassword(auth, email, password);
 	};
 
-  // log out user
-  const logoutUser = () => {
-    setLoading(true)
-    return signOut(auth);
-  }
+	// log out user
+	const logoutUser = () => {
+		setLoading(true);
+		return signOut(auth);
+	};
 
-  // google sign in
-  const signinWithGoogle = () => {
-    setLoading(true)
-    return signInWithPopup(auth, provider);
-  }
+	// google sign in
+	const signinWithGoogle = () => {
+		setLoading(true);
+		return signInWithPopup(auth, provider);
+	};
 	// set current user
 	useEffect(() => {
-		const unSubscribe = onAuthStateChanged(auth, (user) => {
-			setUser(user);
+		const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+			const userEmail = currentUser?.email || user?.email;
+			const loggedUser = { email: userEmail };
+
+			setUser(currentUser);
 			setLoading(false);
+			// console.log("current user", currentUser);
+
+			if (currentUser) {
+				axios
+					.post("http://localhost:5000/jwt", loggedUser, {
+						withCredentials: true,
+					})
+					.then((res) => {
+						if (res.data.success === false) {
+							toast.success("Unauthorized user")
+						}
+					});
+			} else {
+				axios
+					.post("http://localhost:5000/logout", loggedUser, {
+						withCredentials: true,
+					})
+					.then((res) => {
+						if (res.data.success === false) {
+							toast.error("Something went wrong with user")
+						}
+					});
+			}
 		});
 
 		return () => unSubscribe();
-	}, []);
+	}, [user]);
 
 	const value = {
 		user,

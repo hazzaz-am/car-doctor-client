@@ -65,12 +65,15 @@ export const OrdersPage = () => {
 		// .catch((error) => console.log(error.message));
 	};
 
+	const url = `http://localhost:5000/bookings?email=${userEmail}`;
 	useEffect(() => {
-		fetch(`http://localhost:5000/bookings?email=${userEmail}`)
+		fetch(url, {
+			credentials: "include",
+		})
 			.then((res) => res.json())
 			.then((data) => setOrders(data))
 			.catch((err) => console.log(err.message));
-	}, [userEmail]);
+	}, [url]);
 
 	return (
 		<section className="mb-32">
