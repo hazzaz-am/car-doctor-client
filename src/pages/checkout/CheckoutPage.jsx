@@ -38,7 +38,7 @@ export const CheckoutPage = () => {
 			price: service?.price,
 		};
 
-		fetch("http://localhost:5000/bookings", {
+		fetch("https://car-doctor-server-five-self.vercel.app/bookings", {
 			method: "POST",
 			headers: {
 				"content-type": "application/json",
@@ -58,7 +58,9 @@ export const CheckoutPage = () => {
 	};
 
 	useEffect(() => {
-		fetch(`http://localhost:5000/services/${checkoutId}`)
+		fetch(
+			`https://car-doctor-server-five-self.vercel.app/services/${checkoutId}`
+		)
 			.then((res) => res.json())
 			.then((data) => setService(data));
 	}, [checkoutId]);

@@ -24,7 +24,7 @@ export const AddNewService = () => {
 			img: "https://placehold.co/750x400",
 		};
     
-		fetch("http://localhost:5000/services", {
+		fetch("https://car-doctor-server-five-self.vercel.app/services", {
 			method: "POST",
 			headers: {
 				"content-type": "application/json",

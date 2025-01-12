@@ -13,7 +13,7 @@ export const OrdersPage = () => {
 	const userEmail = user?.email;
 
 	const handleDeleteOrder = (id) => {
-		fetch(`http://localhost:5000/bookings/${id}`, {
+		fetch(`https://car-doctor-server-five-self.vercel.app/bookings/${id}`, {
 			method: "DELETE",
 		})
 			.then((res) => res.json())
@@ -28,7 +28,7 @@ export const OrdersPage = () => {
 	};
 
 	const handleClearCart = () => {
-		fetch("http://localhost:5000/bookings", {
+		fetch("https://car-doctor-server-five-self.vercel.app/bookings", {
 			method: "DELETE",
 		})
 			.then((res) => res.json())
@@ -46,13 +46,16 @@ export const OrdersPage = () => {
 			status: "confirmed",
 		};
 
-		fetch(`http://localhost:5000/bookings/${order?._id}`, {
-			method: "PUT",
-			headers: {
-				"content-type": "application/json",
-			},
-			body: JSON.stringify(updatedOrder),
-		})
+		fetch(
+			`https://car-doctor-server-five-self.vercel.app/bookings/${order?._id}`,
+			{
+				method: "PUT",
+				headers: {
+					"content-type": "application/json",
+				},
+				body: JSON.stringify(updatedOrder),
+			}
+		)
 			.then((res) => res.json())
 			.then((data) => {
 				const updatedOrders = orders.filter((item) => item._id !== order._id);
@@ -65,7 +68,7 @@ export const OrdersPage = () => {
 		// .catch((error) => console.log(error.message));
 	};
 
-	const url = `http://localhost:5000/bookings?email=${userEmail}`;
+	const url = `https://car-doctor-server-five-self.vercel.app/bookings?email=${userEmail}`;
 	useEffect(() => {
 		fetch(url, {
 			credentials: "include",

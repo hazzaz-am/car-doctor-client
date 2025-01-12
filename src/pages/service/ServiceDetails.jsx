@@ -9,7 +9,9 @@ export const ServiceDetails = () => {
 	const { serviceId } = useParams();
 
 	useEffect(() => {
-		fetch(`http://localhost:5000/services/${serviceId}`)
+		fetch(
+			`https://car-doctor-server-five-self.vercel.app/services/${serviceId}`
+		)
 			.then((res) => res.json())
 			.then((data) => setService(data));
 	}, [serviceId]);
