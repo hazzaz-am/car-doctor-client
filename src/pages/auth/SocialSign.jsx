@@ -11,12 +11,10 @@ export const SocialSign = () => {
 	const handleGoogleSignin = () => {
 		signinWithGoogle()
 			.then(() => {
-				// console.log(result);
 				toast.success("Sign in successfully");
 				navigate("/")
 			})
 			.catch(() => {
-				// console.log(error.message);
 				toast.error("Something went wrong");
 			});
 	};

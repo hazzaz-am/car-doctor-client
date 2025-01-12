@@ -24,7 +24,11 @@ export const OrdersPage = () => {
 					toast.success("Deleted Successfully");
 				}
 			})
-			.catch((error) => console.log(error.message));
+			.catch((error) => {
+				if (error.message) {
+					toast.error("Something went wrong");
+				}
+			});
 	};
 
 	const handleClearCart = () => {
@@ -65,7 +69,6 @@ export const OrdersPage = () => {
 					toast.success("Order Confirm Successfully");
 				}
 			});
-		// .catch((error) => console.log(error.message));
 	};
 
 	const url = `https://car-doctor-server-five-self.vercel.app/bookings?email=${userEmail}`;
@@ -75,7 +78,11 @@ export const OrdersPage = () => {
 		})
 			.then((res) => res.json())
 			.then((data) => setOrders(data))
-			.catch((err) => console.log(err.message));
+			.catch((err) => {
+				if (err.message) {
+					toast.error("Something went wrong");
+				}
+			});
 	}, [url]);
 
 	return (

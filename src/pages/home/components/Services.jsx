@@ -5,6 +5,7 @@ import { SubHeading } from "../../../components/SubHeading";
 import { Link } from "react-router";
 import { Button } from "../../../components/Button";
 import { ServiceItem } from "./ServiceItem";
+import toast from "react-hot-toast";
 
 export const Services = () => {
 	const [services, setServices] = useState([]);
@@ -13,7 +14,11 @@ export const Services = () => {
 		fetch("https://car-doctor-server-five-self.vercel.app/services")
 			.then((res) => res.json())
 			.then((data) => setServices(data))
-			.catch((error) => console.log(error.message));
+			.catch((error) => {
+				if(error.message) {
+					toast.error("Something went wrong")
+				}
+			});
 	}, []);
 	return (
 		<section className="mb-32">

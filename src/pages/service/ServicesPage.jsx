@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ServiceItem } from "../home/components/ServiceItem";
+import toast from "react-hot-toast";
 
 export const ServicesPage = () => {
 	const [services, setServices] = useState([]);
@@ -8,7 +9,11 @@ export const ServicesPage = () => {
 		fetch("https://car-doctor-server-five-self.vercel.app/services")
 			.then((res) => res.json())
 			.then((data) => setServices(data))
-			.catch((error) => console.log(error.message));
+			.catch((error) => {
+				if (error.message) {
+					toast.error("Can not load data");
+				}
+			});
 	}, []);
 	return (
 		<section className="mb-32">

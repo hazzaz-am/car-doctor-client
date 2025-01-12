@@ -64,7 +64,6 @@ export const Navbar = () => {
 				toast.success("Logout Successfully");
 			})
 			.catch(() => {
-				// console.log(error.message);
 				toast.error("Something went wrong");
 			});
 	};

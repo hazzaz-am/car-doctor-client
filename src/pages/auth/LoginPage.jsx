@@ -27,17 +27,12 @@ export const LoginPage = () => {
 
 		loginUser(email, password)
 			.then(() => {
-				// Signed up
-				// const user = userCredential.user;
-				// console.log(user);
 				toast.success("Login Successfully");
 				form.reset();
 				navigate("/")
 			})
 			.catch(() => {
-				// const errorMessage = error.message;
 				toast.error(`Something Went Wrong`);
-				// console.log("error",errorMessage);
 			});
 	};
 

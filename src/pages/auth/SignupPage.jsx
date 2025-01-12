@@ -27,17 +27,12 @@ export const SignupPage = () => {
 
 		createNewUser(email, password)
 			.then(() => {
-				// Signed up
-				// const user = userCredential.user;
-				// console.log(user);
 				toast.success("Signup Successfully");
 				form.reset()
 				navigate("/")
 			})
 			.catch(() => {
-				// const errorMessage = error.message;
 				toast.error(`Something Went Wrong`);
-				// console.log("error",errorMessage);
 			});
 	};
 	return (

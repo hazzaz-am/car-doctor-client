@@ -50,7 +50,6 @@ export const AuthProvider = ({ children }) => {
 
 			setUser(currentUser);
 			setLoading(false);
-			// console.log("current user", currentUser);
 
 			if (currentUser) {
 				axios
