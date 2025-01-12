@@ -54,22 +54,30 @@ export const AuthProvider = ({ children }) => {
 
 			if (currentUser) {
 				axios
-					.post("http://localhost:5000/jwt", loggedUser, {
-						withCredentials: true,
-					})
+					.post(
+						"https://car-doctor-server-five-self.vercel.app/jwt",
+						loggedUser,
+						{
+							withCredentials: true,
+						}
+					)
 					.then((res) => {
 						if (res.data.success === false) {
-							toast.success("Unauthorized user")
+							toast.success("Unauthorized user");
 						}
 					});
 			} else {
 				axios
-					.post("http://localhost:5000/logout", loggedUser, {
-						withCredentials: true,
-					})
+					.post(
+						"https://car-doctor-server-five-self.vercel.app/logout",
+						loggedUser,
+						{
+							withCredentials: true,
+						}
+					)
 					.then((res) => {
 						if (res.data.success === false) {
-							toast.error("Something went wrong with user")
+							toast.error("Something went wrong with user");
 						}
 					});
 			}
