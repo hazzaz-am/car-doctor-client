@@ -34,7 +34,7 @@ export const CheckoutPage = () => {
 			email,
 			phone,
 			date,
-			service_id: service?.service_id,
+			service_id: service?._id,
 			price: service?.price,
 		};
 

@@ -20,7 +20,6 @@ export const AddNewService = () => {
 		const newBooking = {
 			title,
 			price,
-			service_id: Date.now().toString(),
 			description,
 			img: "https://placehold.co/750x400",
 		};
